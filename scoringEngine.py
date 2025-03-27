@@ -9,6 +9,9 @@ def createConfig():
     with open('config.ini', 'w') as configfile:
         config.write(configfile)
 
+def checkSMTP():
+    
+
 def main():
     if not os.path.isfile('config.ini'):
         createConfig()
