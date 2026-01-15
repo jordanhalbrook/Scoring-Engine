@@ -11,7 +11,7 @@ class HTTPService(ServiceCheck):
 
     def run_check(self):
         try:
-            response = request.get(self.url, timeout=5, verify=self.verify_ssl)
+            response = requests.get(self.url, timeout=5, verify=self.verify_ssl)
             with open(self.expected_file, "r") as f:
                 expected = f.read()
 
