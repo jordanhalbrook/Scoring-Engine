@@ -12,3 +12,15 @@ services:
       port: 587
       username: test
       password: password
+
+    - type: dns
+      name: Internal DNS
+      points: 10
+      server: 0.0.0.0
+      records:
+        - name: www.placeholder.com
+          type: A
+          excected: 0.0.0.0
+        - name: mail.placeholder.com
+          type: A
+          expected: 0.0.0.0
