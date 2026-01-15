@@ -13,6 +13,7 @@ class FTPService(ServiceCheck):
         self.test_file = test_file
 
     def run_check(self):
+        ftp = None
         try:
             ftp = FTP()
             ftp.connect(self.server, self.port, timeout=10)
@@ -43,6 +44,11 @@ class FTPService(ServiceCheck):
             )
 
         except Exception as e:
+            if ftp:
+                try:
+                    ftp.quit()
+                except:
+                    pass
             return ServiceResult(
                 self.name,
                 False,

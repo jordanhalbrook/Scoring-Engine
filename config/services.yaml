@@ -20,7 +20,7 @@ services:
       records:
         - name: www.placeholder.com
           type: A
-          excected: 0.0.0.0
+          expected: 0.0.0.0
         - name: mail.placeholder.com
           type: A
           expected: 0.0.0.0

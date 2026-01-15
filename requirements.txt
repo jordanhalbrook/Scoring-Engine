@@ -1,0 +1,14 @@
+# Python dependencies for CCDC Scoring Engine
+# Install with: pip install -r requirements.txt
+
+# Web framework
+Flask>=3.0.0
+
+# HTTP requests
+requests>=2.31.0
+
+# DNS resolution
+dnspython>=2.4.0
+
+# YAML configuration parsing
+PyYAML>=6.0

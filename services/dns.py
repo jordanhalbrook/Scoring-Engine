@@ -14,6 +14,14 @@ class DNSService(ServiceCheck):
 
         try:
             for record in self.records:
+                if "expected" not in record:
+                    return ServiceResult(
+                        self.name,
+                        False,
+                        f"Missing 'expected' field in DNS record for {record.get('name', 'unknown')}",
+                        datetime.utcnow()
+                    )
+                
                 answers = resolver.resolve(
                     record["name"],
                     record["type"]

@@ -15,12 +15,13 @@
     <tr>
         <td>
             <a href="{{ url_for('service_detail', name=service) }}">
+                {{ service }}
             </a>
         </td>
-        <td>{{ data.pass }}</td>
-        <td>{{ data.fail }}</td>
+        <td>{{ data["pass"] }}</td>
+        <td>{{ data["fail"] }}</td>
         <td>
-            {% if data.pass > data.fail %}
+            {% if data["pass"] > data["fail"] %}
                 <span class="up">UP</span>
             {% else %}
                 <span class="down">DOWN</span>
