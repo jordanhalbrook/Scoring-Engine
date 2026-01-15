@@ -1,0 +1,14 @@
+services:
+    - type: http
+      name: Web Server
+      points: 10
+      url: http://
+      expected_file: expected/index.html
+
+    - type: smtp
+      name: Mail Server
+      points: 10
+      server: 0.0.0.0
+      port: 587
+      username: test
+      password: password
