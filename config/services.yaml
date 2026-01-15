@@ -32,4 +32,4 @@ services:
       port: 21
       username: user
       password: password
-      test_files: test.txt
+      test_file: test.txt

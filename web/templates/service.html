@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ service_name }} - Recent Checks</h2>
+
+<table>
+    <tr>
+        <th>Time</th>
+        <th>Result</th>
+        <th>Message</th>
+    </tr>
+
+    {% for r in history %}
+    <tr>
+        <td{{ r.timestamp }}</td>
+        <td>
+            {% if r.success %}
+                <span class="up">PASS</span>
+            {% else %}
+                <span class="down">FAIL</span>
+            {% endif %}
+        </td>
+        <td>{{ r.message }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

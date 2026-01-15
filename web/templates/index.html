@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Total Points: {{ total_points }}</h2>
+
+<table>
+    <tr>
+        <th>Service</th>
+        <th>Pass</th>
+        <th>Fail</th>
+        <th>Status</th>
+    </tr>
+
+    {% for service, data in stats.items() %}
+    <tr>
+        <td>
+            <a href="{{ url_for('service_detail', name=service) }}">
+            </a>
+        </td>
+        <td>{{ data.pass }}</td>
+        <td>{{ data.fail }}</td>
+        <td>
+            {% if data.pass > data.fail %}
+                <span class="up">UP</span>
+            {% else %}
+                <span class="down">DOWN</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

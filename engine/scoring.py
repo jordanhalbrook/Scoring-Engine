@@ -4,7 +4,7 @@ class Scorer:
     def __init__(self):
         self.total_points = 0
         self.history = []
-        self.service_status =defaultdict(lambda: {"pass": 0, "fail": 0})
+        self.service_stats =defaultdict(lambda: {"pass": 0, "fail": 0})
 
     def record(self, result, points):
         self.history.append(result)
