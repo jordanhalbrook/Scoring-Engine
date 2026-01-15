@@ -15,6 +15,6 @@ class ServiceCheck(ABC):
         self.name = name
         self.points = points
 
-        @abstractmethod
-        def run_check(self) -> ServiceResult:
-            pass
+    @abstractmethod
+    def run_check(self) -> ServiceResult:
+        pass
