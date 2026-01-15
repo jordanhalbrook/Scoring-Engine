@@ -24,3 +24,12 @@ services:
         - name: mail.placeholder.com
           type: A
           expected: 0.0.0.0
+
+    - type: ftp
+      name: FTP Server
+      points: 10
+      server: 0.0.0.0
+      port: 21
+      username: user
+      password: password
+      test_files: test.txt

@@ -1,10 +1,16 @@
 import yaml
 from services.http import HTTPService
 from services.smtp import SMTPService
+from services.pop3 import POP3Service
+from services.dns import DNSService
+from services.ftp import FTPService
 
 SERVICE_TYPES = {
     "http": HTTPService,
     "smtp": SMTPService,
+    "pop3": POP3Service,
+    "dns": DNSService,
+    "ftp": FTPService,
 }
 
 def load_services(config_file):
