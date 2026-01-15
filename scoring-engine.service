@@ -1,0 +1,32 @@
+[Unit]
+Description=CCDC Scoring Engine
+After=network.target
+
+[Service]
+Type=simple
+User=scoring-engine
+Group=scoring-engine
+WorkingDirectory=/opt/scoring-engine
+Environment="PATH=/opt/scoring-engine/venv/bin"
+ExecStart=/opt/scoring-engine/venv/bin/gunicorn \
+    --bind 127.0.0.1:5000 \
+    --workers 2 \
+    --threads 2 \
+    --timeout 120 \
+    --access-logfile /opt/scoring-engine/logs/access.log \
+    --error-logfile /opt/scoring-engine/logs/error.log \
+    --log-level info \
+    --capture-output \
+    main:app
+Restart=always
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/scoring-engine/logs
+
+[Install]
+WantedBy=multi-user.target

@@ -1,20 +1,36 @@
 services:
     - type: http
-      name: Web Server
+      name: HTTP Server
       points: 10
-      url: http://
+      url: http://0.0.0.0
       expected_file: expected/index.html
+      verify_ssl: false
+
+    - type: http
+      name: HTTPS Server
+      points: 10
+      url: https://0.0.0.0
+      expected_file: expected/index.html
+      verify_ssl: true
 
     - type: smtp
-      name: Mail Server
+      name: SMTP Server
       points: 10
       server: 0.0.0.0
       port: 587
       username: test
       password: password
 
+    - type: pop3
+      name: POP3 Server
+      points: 10
+      server: 0.0.0.0
+      port: 110
+      username: test
+      password: password
+
     - type: dns
-      name: Internal DNS
+      name: DNS
       points: 10
       server: 0.0.0.0
       records:

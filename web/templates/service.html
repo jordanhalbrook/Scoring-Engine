@@ -3,6 +3,16 @@
 
 <h2>{{ service_name }} - Recent Checks</h2>
 
+<div style="margin: 20px 0; padding: 10px; background: #e8f4f8; border-radius: 5px;">
+    <strong>This Period:</strong> {{ period_info.total_checks }} check(s)<br>
+    <strong>Consecutive Periods Down:</strong> 
+    {% if period_info.missed_checks > 0 %}
+        <span class="down">{{ period_info.missed_checks }}</span>
+    {% else %}
+        <span class="up">0</span>
+    {% endif %}
+</div>
+
 <table>
     <tr>
         <th>Time</th>
@@ -12,7 +22,7 @@
 
     {% for r in history %}
     <tr>
-        <td>{{ r.timestamp }}</td>
+        <td>{{ r.timestamp.strftime("%Y-%m-%d %H:%M:%S") }}</td>
         <td>
             {% if r.success %}
                 <span class="up">PASS</span>

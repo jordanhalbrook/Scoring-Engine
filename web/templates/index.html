@@ -3,11 +3,18 @@
 
 <h2>Total Points: {{ total_points }}</h2>
 
+<div style="margin: 20px 0; padding: 10px; background: #e8f4f8; border-radius: 5px;">
+    <strong>Current Period:</strong> Started {{ period_summary.period_start.strftime("%Y-%m-%d %H:%M:%S") }} UTC<br>
+    <strong>Period Points:</strong> {{ period_summary.period_points }}<br>
+    <strong>Total Periods:</strong> {{ period_summary.total_periods }}
+</div>
+
 <table>
     <tr>
         <th>Service</th>
         <th>Pass</th>
         <th>Fail</th>
+        <th>Consecutive Periods Down</th>
         <th>Status</th>
     </tr>
 
@@ -20,6 +27,17 @@
         </td>
         <td>{{ data["pass"] }}</td>
         <td>{{ data["fail"] }}</td>
+        <td>
+            {% if service in period_stats %}
+                {% if period_stats[service]["missed_checks"] > 0 %}
+                    <span class="down">{{ period_stats[service]["missed_checks"] }}</span>
+                {% else %}
+                    <span class="up">0</span>
+                {% endif %}
+            {% else %}
+                <span class="up">0</span>
+            {% endif %}
+        </td>
         <td>
             {% if data["pass"] > data["fail"] %}
                 <span class="up">UP</span>
